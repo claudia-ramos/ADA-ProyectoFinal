@@ -2,6 +2,7 @@ package com.example.ProyectoFinal.modelo;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "libros")
@@ -16,12 +17,14 @@ public class Libro {
     @NotBlank(message = "Debe ingresar un isbn")
     private String isbn;
 
-    @NotBlank(message = "Debe ingresar un año")
+    @NotNull(message = "Debe ingresar un año")
     private Integer anio;
 
-    @NotBlank(message = "Debe ingresar cantidad de ejemplares")
+    @NotNull(message = "Debe ingresar cantidad de ejemplares")
     private Integer ejemplares;
 
+    @NotNull(message = "Debe ingresar la cantidad de ejemplares prestados")
+    private  Integer ejemplaresPrestados;
 
     @ManyToOne
     @JoinColumn(name = "autor_id")
@@ -30,20 +33,22 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(Long id, String titulo, String isbn, Integer anio, Integer ejemplares, Autor autor) {
+    public Libro(Long id, String titulo, String isbn, Integer anio, Integer ejemplares,Integer ejemplaresPrestados, Autor autor) {
         this.id = id;
         this.titulo = titulo;
         this.isbn = isbn;
         this.anio = anio;
         this.ejemplares = ejemplares;
+        this.ejemplaresPrestados = ejemplaresPrestados;
         this.autor = autor;
     }
 
-    public Libro(String titulo, String isbn, Integer anio, Integer ejemplares, Autor autor) {
+    public Libro(String titulo, String isbn, Integer anio, Integer ejemplares, Integer ejemplaresPrestados, Autor autor) {
         this.titulo = titulo;
         this.isbn = isbn;
         this.anio = anio;
         this.ejemplares = ejemplares;
+        this.ejemplaresPrestados = ejemplaresPrestados;
         this.autor = autor;
     }
 
@@ -93,5 +98,13 @@ public class Libro {
 
     public void setAutor(Autor autor) {
         this.autor = autor;
+    }
+
+    public Integer getEjemplaresPrestados() {
+        return ejemplaresPrestados;
+    }
+
+    public void setEjemplaresPrestados(Integer ejemplaresPrestados) {
+        this.ejemplaresPrestados = ejemplaresPrestados;
     }
 }

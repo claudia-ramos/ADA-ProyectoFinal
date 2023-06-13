@@ -6,7 +6,7 @@ import com.example.ProyectoFinal.modelo.Libro;
 import java.util.List;
 
 public interface LibroServicio {
-    List<Libro> listarTodasLosLibro();
+    List<Libro> listarTodasLosLibros();
 
     Libro guardarLibro(Libro libro);
 

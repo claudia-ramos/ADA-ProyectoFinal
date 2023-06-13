@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
 
 @Controller
 public class AutorControlador {
@@ -20,8 +19,8 @@ public class AutorControlador {
     @Autowired
     private AutorServicio autorServicio;
 
-    @GetMapping("/")
-    public String verPaginaDeInicio(Model model) {
+    @GetMapping("/listar/libro")
+    public String verPaginaDeInicioAutor(Model model) {
         model.addAttribute("autores",autorServicio.listarTodasLosAutores());
         return "listarAutor";
     }
@@ -33,7 +32,7 @@ public class AutorControlador {
     }
 
     @PostMapping("/guardar/autor")
-    public String guardarContacto(@Validated Autor autor, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+    public String guardarAutor(@Validated Autor autor, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         if(bindingResult.hasErrors()) {
             model.addAttribute("autor",autor);
             return "crear_autor";
