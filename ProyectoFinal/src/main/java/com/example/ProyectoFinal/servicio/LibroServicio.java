@@ -10,7 +10,7 @@ public interface LibroServicio {
 
     Libro guardarLibro(Libro libro);
 
-    Libro obtenerPorId(Long id);
+    Libro obtenerPorId(Integer id);
 
     Libro actualizarLibro(Libro libro);
 

@@ -21,13 +21,18 @@ public class LibroControlador {
     @Autowired
     private AutorServicio autorServicio;
 
-    //@GetMapping("/login")
-    //public String iniciarSesion(){
-     //   return "login";
-    //}
+    @GetMapping("/login")
+    public String iniciarSesion(){
+        return "login";
+    }
 
     @GetMapping("/")
-    public String verPaginaDeInicio(Model model) {
+    public String home(){
+        return "home";
+    }
+
+    @GetMapping("/listar/libro")
+    public String verPaginaDeInicioLibro(Model model) {
         model.addAttribute("libros",libroServicio.listarTodasLosLibros());
         return "listarLibros";
     }
@@ -51,14 +56,14 @@ public class LibroControlador {
     }
 
     @GetMapping("/editar/libro/{id}")
-    public String mostrarFormularioDeEditarLibro(@PathVariable Long id, Model model) {
+    public String mostrarFormularioDeEditarLibro(@PathVariable Integer id, Model model) {
         Libro libro  = libroServicio.obtenerPorId(id);
         model.addAttribute("libro",libro);
         return "editar_libro";
     }
 
     @PostMapping("/editar/libro/{id}")
-    public String actualizarLibro(@PathVariable Long id, @Validated Libro libro, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+    public String actualizarLibro(@PathVariable Integer id, @Validated Libro libro, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         Libro libroDB = libroServicio.obtenerPorId(id);
         if(bindingResult.hasErrors()) {
             model.addAttribute("libro",libro);
@@ -79,7 +84,7 @@ public class LibroControlador {
     }
 
     @PostMapping("/eliminar/libro/{id}")
-    public String eliminarAutor(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    public String eliminarAutor(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         Libro libro = libroServicio.obtenerPorId(id);
         libroServicio.eliminarLibro(libro);
         redirectAttributes.addFlashAttribute("msgExito","El libro ha sido eliminado exitosamente");

@@ -19,7 +19,7 @@ public class AutorControlador {
     @Autowired
     private AutorServicio autorServicio;
 
-    @GetMapping("/listar/libro")
+    @GetMapping("/listar/autor")
     public String verPaginaDeInicioAutor(Model model) {
         model.addAttribute("autores",autorServicio.listarTodasLosAutores());
         return "listarAutor";

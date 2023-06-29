@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "Debe ingresar un titulo")
     private String titulo;
@@ -33,7 +33,7 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(Long id, String titulo, String isbn, Integer anio, Integer ejemplares,Integer ejemplaresPrestados, Autor autor) {
+    public Libro(Integer id, String titulo, String isbn, Integer anio, Integer ejemplares,Integer ejemplaresPrestados, Autor autor) {
         this.id = id;
         this.titulo = titulo;
         this.isbn = isbn;
@@ -52,11 +52,11 @@ public class Libro {
         this.autor = autor;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

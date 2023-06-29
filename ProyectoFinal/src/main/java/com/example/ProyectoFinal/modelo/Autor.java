@@ -10,13 +10,15 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "autores")
+@Table(name = "autor")
 public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @NotBlank(message = "Debe ingresar un nombre")
+    @Column(name = "nombre")
     private String nombre;
 
     @NotBlank(message = "Debe ingresar un apellido")

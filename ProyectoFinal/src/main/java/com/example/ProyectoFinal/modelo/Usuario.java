@@ -1,5 +1,7 @@
 package com.example.ProyectoFinal.modelo;
 
+import com.example.ProyectoFinal.modelo.Rol;
+
 import javax.persistence.*;
 import java.util.Collection;
 

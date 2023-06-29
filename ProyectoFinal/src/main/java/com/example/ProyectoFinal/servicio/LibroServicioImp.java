@@ -24,7 +24,7 @@ public class LibroServicioImp implements LibroServicio{
     }
 
     @Override
-    public Libro obtenerPorId(Long id) {
+    public Libro obtenerPorId(Integer id) {
         return libroRepositorio.findById(id).get();
     }
 
