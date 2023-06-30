@@ -39,7 +39,7 @@ public class AutorControlador {
         }
         autorServicio.guardarAutor(autor);
         redirectAttributes.addFlashAttribute("msgExito","El autor ha sido agregado con exito");
-        return "redirect:/";
+        return "redirect:/listar/autor";
     }
 
     @GetMapping("/editar/autor/{id}")
@@ -65,7 +65,7 @@ public class AutorControlador {
         autorServicio.actualizarAutor(autorDB);
 
         redirectAttributes.addFlashAttribute("msgExito","El autor ha sido actualizado exitosamente");
-        return "redirect:/";
+        return "redirect:/listar/autor";
     }
 
     @PostMapping("/eliminar/autor/{id}")
@@ -73,7 +73,7 @@ public class AutorControlador {
         Autor autor = autorServicio.obtenerPorId(id);
         autorServicio.eliminarAutor(autor);
         redirectAttributes.addFlashAttribute("msgExito","El autor ha sido eliminado exitosamente");
-        return "redirect:/";
+        return "redirect:/listar/autor";
     }
 
 

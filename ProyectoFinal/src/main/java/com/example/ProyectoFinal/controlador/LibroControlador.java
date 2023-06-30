@@ -52,13 +52,14 @@ public class LibroControlador {
         }
         libroServicio.guardarLibro(libro);
         redirectAttributes.addFlashAttribute("msgExito","El libro ha sido agregado con exito");
-        return "redirect:/";
+        return "redirect:/listar/libro";
     }
 
     @GetMapping("/editar/libro/{id}")
     public String mostrarFormularioDeEditarLibro(@PathVariable Integer id, Model model) {
         Libro libro  = libroServicio.obtenerPorId(id);
         model.addAttribute("libro",libro);
+        model.addAttribute("autores",autorServicio.listarTodasLosAutores());
         return "editar_libro";
     }
 
@@ -80,7 +81,7 @@ public class LibroControlador {
         libroServicio.actualizarLibro(libroDB);
 
         redirectAttributes.addFlashAttribute("msgExito","El libro ha sido actualizado exitosamente");
-        return "redirect:/";
+        return "redirect:/listar/libro";
     }
 
     @PostMapping("/eliminar/libro/{id}")
@@ -88,6 +89,6 @@ public class LibroControlador {
         Libro libro = libroServicio.obtenerPorId(id);
         libroServicio.eliminarLibro(libro);
         redirectAttributes.addFlashAttribute("msgExito","El libro ha sido eliminado exitosamente");
-        return "redirect:/";
+        return "redirect:/listar/libro";
     }
 }
